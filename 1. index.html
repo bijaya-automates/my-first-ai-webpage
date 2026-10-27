@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My AI Assistant</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      margin: 0;
+      padding: 40px 20px;
+    }
+
+    .chat-container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 4px 15px #00000015;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    p {
+      text-align: center;
+      color: #666;
+    }
+
+    textarea {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      resize: vertical;
+      font-size: 16px;
+    }
+
+    button {
+      width: 100%;
+      margin-top: 12px;
+      padding: 12px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    #response {
+      margin-top: 20px;
+      padding: 12px;
+      background: #f3f4f6;
+      border-radius: 8px;
+      min-height: 24px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="chat-container">
+    <h1>My AI Assistant</h1>
+    <p>Ask a question and get help from AI.</p>
+
+    <textarea id="question"
+      rows="4"
+      placeholder="Type your question here..."></textarea>
+
+    <button onclick="askAI()">Ask AI</button>
+
+    <div id="response">Your AI response will appear here.</div>
+  </div>
+
+  <script>
+    function askAI() {
+      const question = document.getElementById("question").value.trim();
+      const response = document.getElementById("response");
+
+      if (!question) {
+        response.textContent = "Please type a question first.";
+        return;
+      }
+
+      response.textContent =
+        "Your question: " + question +
+        "\n\nNext, we will connect this webpage to n8n and Gemini AI.";
+    }
+  </script>
+</body>
+</html>

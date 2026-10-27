@@ -81,19 +81,34 @@
   </div>
 
   <script>
-    function askAI() {
-      const question = document.getElementById("question").value.trim();
-      const response = document.getElementById("response");
+    
+async function askAI() {
+  const question = document.getElementById("question").value.trim();
+  const response = document.getElementById("response");
 
-      if (!question) {
-        response.textContent = "Please type a question first.";
-        return;
-      }
+  if (!question) {
+    response.textContent = "Please type a question first.";
+    return;
+  }
 
-      response.textContent =
-        "Your question: " + question +
-        "\n\nNext, we will connect this webpage to n8n and Gemini AI.";
-    }
+  response.textContent = "Sending to n8n...";
+
+  try {
+    const result = await fetch("http://localhost:5678/webhook-test/96326e02-7202-4b49-8cb6-70829cc183b5", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ question })
+    });
+
+    const data = await result.json();
+    response.textContent = data.output || data.text || JSON.stringify(data);
+  } catch (error) {
+    response.textContent = "Connection failed. Check n8n and webhook settings.";
+  }
+}
+
   </script>
 </body>
 </html>

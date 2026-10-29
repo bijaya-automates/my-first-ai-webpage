@@ -94,7 +94,7 @@ async function askAI() {
   response.textContent = "Sending to n8n...";
 
   try {
-    const result = await fetch("http://localhost:5678/webhook-test/96326e02-7202-4b49-8cb6-70829cc183b5", {
+    const result = await fetch("http://localhost:5678/webhook/96326e02-7202-4b49-8cb6-70829cc183b5", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

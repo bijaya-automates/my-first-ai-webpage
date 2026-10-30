@@ -102,8 +102,8 @@ async function askAI() {
       body: JSON.stringify({ question })
     });
 
-    const data = await result.json();
-    response.textContent = data.output || data.text || JSON.stringify(data);
+    const data = await result.text();
+response.textContent = data;
   } catch (error) {
     response.textContent = "Connection failed. Check n8n and webhook settings.";
   }
